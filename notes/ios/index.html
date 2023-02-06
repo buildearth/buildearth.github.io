@@ -74,6 +74,7 @@
   <script type="text/javascript"
     color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
   </script>
+
   <div class='l_body' id='start'>
     <aside class='l_left' layout='wiki'>
     
@@ -656,5 +657,21 @@
 
 
   </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+  <script>
+    fetch('https://v1.hitokoto.cn')
+      .then(function (res){
+        return res.json();
+      })
+      .then(function (data) {
+        var hitokoto = document.getElementById('hitokoto');
+        hitokoto.innerText = data.hitokoto + '——【' + data.from + '】';
+      })
+      .catch(function (err) {
+        console.error(err);
+      })
+  </script>
 </body>
 </html>
