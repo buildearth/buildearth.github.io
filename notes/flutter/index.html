@@ -71,9 +71,11 @@
 
 
   <!--动态线条背景-->
+  <!--
   <script type="text/javascript"
     color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
   </script>
+  -->
 
   <div class='l_body' id='start'>
     <aside class='l_left' layout='wiki'>
@@ -344,5 +346,27 @@
         console.error(err);
       })
   </script>
+
+  <script>
+    //获取 Memos 总条数
+    function getTotal() {
+        var totalUrl = "http://120.78.141.29/api/memo/amount?creatorId=1";
+        //var totalUrl = "http://memos.besaka.top/api/memo/amount?creatorId=1";
+        fetch(totalUrl).then(response => {
+            return response.json();
+        }).then(data => {
+            // console.log(data.data);
+            var memosCount = document.getElementById('memosCount');
+            memosCount.innerHTML = data.data;
+        }).catch(err => {
+            // Do something for an error here
+        });
+    };
+    window.onload = getTotal();
+  </script>
+  <!--添加新年快乐-->
+  <script src="https://api.vvhan.com/api/denglong2"></script>
+  <!--添加满屏樱花-->
+  <script src="https://api.vvhan.com/api/yinghua"></script>
 </body>
 </html>
