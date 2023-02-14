@@ -68,6 +68,8 @@
     
       <link rel="stylesheet" href="/css/memos.css" />
     
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/css/iziToast.min.css">
+    
   
 </head>
 
@@ -78,11 +80,10 @@
 
 
   <!--动态线条背景-->
-  <!--
   <script type="text/javascript"
     color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
   </script>
-  -->
+  
 
   <div class='l_body' id='start'>
     <aside class='l_left' layout='wiki'>
@@ -271,6 +272,9 @@
     // 从 butterfly 和 volantis 获得灵感
     loadScript: (src, opt) => new Promise((resolve, reject) => {
       var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = stellar.config.root + src.substring(1);
+      }
       script.src = src;
       if (opt) {
         for (let key of Object.keys(opt)) {
@@ -309,6 +313,7 @@
       day: '天前',
       month: '个月前',
     },
+    root : '/',
   };
 
   // required plugins (only load if needs)
@@ -343,7 +348,7 @@
     stellar.plugins.preload = Object.assign({"enable":true,"service":"flying_pages","instant_page":"https://gcore.jsdelivr.net/gh/volantis-x/cdn-volantis@4.1.2/js/instant_page.js","flying_pages":"https://gcore.jsdelivr.net/gh/gijo-varghese/flying-pages@2.1.2/flying-pages.min.js"});
   }
   if ('true' == 'true') {
-    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img"});
+    stellar.plugins.fancybox = Object.assign({"enable":true,"js":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js","css":"https://gcore.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css","selector":".swiper-slide img, .md-text.content p>img, .md-text.content li img , .wl-content img"});
   }
   if ('false' == 'true') {
     stellar.plugins.heti = Object.assign({"enable":false,"css":"https://unpkg.com/heti@0.9.2/umd/heti.min.css","js":"https://unpkg.com/heti@0.9.2/umd/heti-addon.min.js"});
@@ -384,6 +389,12 @@
 
 <!-- inject -->
 
+  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/izitoast@1.4.0/dist/js/iziToast.min.js"></script>
+  
+    <script type="text/javascript" src="/js/copy_prompt.js"></script>
+  
+
 
   </div>
   
@@ -423,6 +434,6 @@
   <!--添加新年快乐-->
   <script src="https://api.vvhan.com/api/denglong2"></script>
   <!--添加满屏樱花-->
-  <script src="https://api.vvhan.com/api/yinghua"></script>
+  <!-- <script src="https://api.vvhan.com/api/yinghua"></script> -->
 </body>
 </html>
