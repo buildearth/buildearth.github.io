@@ -380,8 +380,8 @@
   <script>
     //获取 Memos 总条数
     function getTotal() {
-        var totalUrl = "http://120.78.141.29/api/memo/amount?creatorId=1";
-        //var totalUrl = "http://memos.besaka.top/api/memo/amount?creatorId=1";
+        // var totalUrl = "http://120.78.141.29/api/memo/amount?creatorId=1";
+        var totalUrl = "http://memos.besaka.top/api/memo/amount?creatorId=1";
         fetch(totalUrl).then(response => {
             return response.json();
         }).then(data => {
